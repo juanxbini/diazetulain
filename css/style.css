@@ -247,7 +247,17 @@ p { color: var(--text-light); line-height: 1.75; }
 
 .nav-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: invert(1) brightness(2);
+  opacity: 0.9;
 }
 
 .nav-logo .logo-main {
@@ -1403,6 +1413,16 @@ footer {
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   margin-bottom: 32px;
+}
+
+.footer-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: invert(1) brightness(1.8) sepia(0.3) saturate(2) hue-rotate(5deg);
+  opacity: 0.85;
+  margin-bottom: 12px;
+  display: block;
 }
 
 .footer-brand .logo-main {
