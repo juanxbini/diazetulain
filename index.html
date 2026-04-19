@@ -764,9 +764,13 @@
         </div>
       </div>
 
-      <div class="reviews-grid">
+      <div class="reviews-carousel fade-in">
+        <button class="reviews-btn reviews-btn--prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="reviews-btn reviews-btn--next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
 
-        <div class="review-card fade-in">
+        <div class="reviews-track" id="reviewsTrack">
+
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">C</div>
             <div class="review-meta">
@@ -781,7 +785,7 @@
           <p class="review-text">El Lic. Andrés tuvo la paciencia y la empatía de atenderme desde el exterior, incluso un domingo por mi urgencia. Gracias por su profesionalismo. Altamente recomendado.</p>
         </div>
 
-        <div class="review-card fade-in fade-in-delay-1">
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">S</div>
             <div class="review-meta">
@@ -796,7 +800,7 @@
           <p class="review-text">Quiero expresar mi más sincero agradecimiento al Dr. Andrés Díaz Etulain por su excelente labor, compromiso, dedicación, responsabilidad y profesionalismo. Estoy muy satisfecha y lo recomiendo ampliamente.</p>
         </div>
 
-        <div class="review-card fade-in fade-in-delay-2">
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">L</div>
             <div class="review-meta">
@@ -811,7 +815,7 @@
           <p class="review-text">Excelente atención y asesoramiento. Lo recomiendo por mi experiencia con varios abogados anteriores.</p>
         </div>
 
-        <div class="review-card fade-in">
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">S</div>
             <div class="review-meta">
@@ -826,7 +830,7 @@
           <p class="review-text">Súper recomendable el estudio por su atención, el profesionalismo del Dr. y sobre todo el trato muy humano con la gente. Fui por una consulta y me resolvió todo el trámite sin demoras.</p>
         </div>
 
-        <div class="review-card fade-in fade-in-delay-1">
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">S</div>
             <div class="review-meta">
@@ -841,7 +845,7 @@
           <p class="review-text">Recomiendo encarecidamente a cualquier persona que necesite asesoría legal confiable y eficaz. El Dr. manejó cada asunto con la máxima profesionalidad, ética y los resultados superaron mis expectativas.</p>
         </div>
 
-        <div class="review-card fade-in fade-in-delay-2">
+        <div class="review-card">
           <div class="review-card-header">
             <div class="review-avatar">G</div>
             <div class="review-meta">
@@ -856,7 +860,10 @@
           <p class="review-text">Profesional con dedicación al trabajo, interés y preocupación por resolver el caso. Excelente trato humano y empatía.</p>
         </div>
 
-      </div>
+        </div><!-- /reviews-track -->
+
+        <div class="reviews-dots" id="reviewsDots"></div>
+      </div><!-- /reviews-carousel -->
 
       <div class="reviews-cta fade-in">
         <a href="https://www.google.com/maps/search/Estudio+Jurídico+Díaz+Etulain+Bahía+Blanca" target="_blank" rel="noopener" class="btn btn-outline-gold">
@@ -1048,6 +1055,52 @@
       "https://www.instagram.com/gestoria_diazetulain"
     ]
   }
+  </script>
+
+  <script>
+    (function () {
+      const track = document.getElementById('reviewsTrack');
+      const dotsContainer = document.getElementById('reviewsDots');
+      if (!track) return;
+
+      const cards = track.querySelectorAll('.review-card');
+      const visibleCount = () => window.innerWidth >= 900 ? 3 : window.innerWidth >= 600 ? 2 : 1;
+      let current = 0;
+
+      // Build dots
+      cards.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'reviews-dot';
+        d.setAttribute('aria-label', 'Reseña ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      });
+
+      function goTo(index) {
+        const max = cards.length - visibleCount();
+        current = Math.max(0, Math.min(index, max));
+        const cardW = cards[0].offsetWidth + 24;
+        track.scrollTo({ left: current * cardW, behavior: 'smooth' });
+        updateDots();
+      }
+
+      function updateDots() {
+        dotsContainer.querySelectorAll('.reviews-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      track.addEventListener('scroll', () => {
+        const cardW = cards[0].offsetWidth + 24;
+        current = Math.round(track.scrollLeft / cardW);
+        updateDots();
+      });
+
+      document.querySelector('.reviews-btn--prev').addEventListener('click', () => goTo(current - 1));
+      document.querySelector('.reviews-btn--next').addEventListener('click', () => goTo(current + 1));
+
+      updateDots();
+    })();
   </script>
 </body>
 </html>
