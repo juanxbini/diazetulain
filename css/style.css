@@ -55,8 +55,8 @@
 .contact-item-icon  svg { width: 22px; height: 22px; color: var(--gold); }
 .about-icon         svg { width: 36px; height: 36px; color: var(--gold); }
 .avatar             svg { width: 48px; height: 48px; color: var(--gold); }
-.team-social a      svg { width: 17px; height: 17px; }
-.contact-social a   svg { width: 19px; height: 19px; }
+.team-social a      svg, .team-social a i      { width: 17px; height: 17px; font-size: 17px; }
+.contact-social a   svg, .contact-social a i   { width: 19px; height: 19px; font-size: 19px; }
 .whatsapp-float     svg { width: 28px; height: 28px; color: white; }
 .btn                svg { width: 17px; height: 17px; flex-shrink: 0; }
 .nav-cta            svg { width: 15px; height: 15px; }
@@ -1153,7 +1153,7 @@ p { color: var(--text-light); line-height: 1.75; }
   transition: all var(--transition);
 }
 
-.location-social a svg { width: 17px; height: 17px; }
+.location-social a svg, .location-social a i { width: 17px; height: 17px; font-size: 17px; }
 
 .location-social a:hover {
   background: var(--gold);
