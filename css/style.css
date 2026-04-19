@@ -18,8 +18,9 @@
   --gray-600: #6b7280;
   --text: #1f2937;
   --text-light: #4b5563;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Limelight', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
   --transition: 0.3s ease;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
@@ -84,7 +85,7 @@ ul { list-style: none; }
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
@@ -103,6 +104,7 @@ p { color: var(--text-light); line-height: 1.75; }
 
 .section-label {
   display: inline-block;
+  font-family: var(--font-ui);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -154,7 +156,7 @@ p { color: var(--text-light); line-height: 1.75; }
   gap: 8px;
   padding: 14px 28px;
   border-radius: var(--radius);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -273,6 +275,7 @@ p { color: var(--text-light); line-height: 1.75; }
 }
 
 .nav-links a {
+  font-family: var(--font-ui);
   font-size: 0.85rem;
   font-weight: 500;
   color: rgba(255,255,255,0.75);
@@ -1309,6 +1312,7 @@ p { color: var(--text-light); line-height: 1.75; }
 
 .form-group label {
   display: block;
+  font-family: var(--font-ui);
   font-size: 0.8rem;
   font-weight: 600;
   color: rgba(255,255,255,0.6);
@@ -1321,6 +1325,7 @@ p { color: var(--text-light); line-height: 1.75; }
 .form-group select,
 .form-group textarea {
   width: 100%;
+  font-family: var(--font-ui);
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius);
