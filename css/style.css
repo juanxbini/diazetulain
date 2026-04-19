@@ -1066,6 +1066,113 @@ p { color: var(--text-light); line-height: 1.75; }
 }
 
 /* ===================================
+   LOCATION SECTION
+   =================================== */
+.location {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.location-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.location-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold-dark);
+}
+
+.location-item-icon svg { width: 18px; height: 18px; }
+
+.location-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.location-item-text strong {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.location-item-text span,
+.location-item-text a {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.location-item-text a:hover { color: var(--gold-dark); }
+
+.location-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.location-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  transition: all var(--transition);
+}
+
+.location-social a svg { width: 17px; height: 17px; }
+
+.location-social a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.location-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+}
+
+@media (max-width: 768px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ===================================
    CONTACT SECTION
    =================================== */
 .contact {
