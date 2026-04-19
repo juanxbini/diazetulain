@@ -281,18 +281,19 @@ p { color: var(--text-light); line-height: 1.75; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
 }
 
 .nav-links a {
   font-family: var(--font-ui);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: rgba(255,255,255,0.75);
-  padding: 8px 12px;
+  padding: 7px 9px;
   border-radius: var(--radius);
   transition: all var(--transition);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -305,7 +306,8 @@ p { color: var(--text-light); line-height: 1.75; }
   background: var(--gold) !important;
   color: var(--dark) !important;
   font-weight: 600 !important;
-  padding: 9px 18px !important;
+  padding: 8px 14px !important;
+  margin-left: 6px;
 }
 
 .nav-cta:hover {
