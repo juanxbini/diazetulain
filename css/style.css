@@ -306,23 +306,31 @@ p { color: var(--text-light); line-height: 1.75; }
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+.hamburger:hover {
+  background: rgba(255,255,255,0.08);
 }
 
 .hamburger span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 26px;
+  height: 2.5px;
   background: var(--white);
-  border-radius: 2px;
+  border-radius: 3px;
   transition: all var(--transition);
+  transform-origin: center;
 }
 
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(0, 8.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(0, -8.5px); }
 
 /* ===================================
    HERO SECTION
@@ -1593,7 +1601,7 @@ footer {
   }
 
   .hero-stats {
-    gap: 28px;
+    display: none;
   }
 
   .footer-top {
@@ -1617,7 +1625,7 @@ footer {
 
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; }
-  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .hero-stats { display: none; }
   .services-grid { grid-template-columns: 1fr; }
   .team-grid { flex-direction: column; align-items: center; }
 }
