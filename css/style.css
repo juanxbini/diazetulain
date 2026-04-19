@@ -19,7 +19,7 @@
   --text: #1f2937;
   --text-light: #4b5563;
   --font-heading: 'Limelight', Georgia, serif;
-  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
   --transition: 0.3s ease;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
