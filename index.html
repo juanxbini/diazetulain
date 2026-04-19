@@ -59,10 +59,10 @@
       pointer-events: none;
     }
     
-    /* En mobile, mantener el logo más contenido */
     @media (max-width: 768px) {
       .hero::before {
-        background-size: contain;
+        background-size: cover;
+        background-position: center;
         opacity: 0.15;
       }
     }
