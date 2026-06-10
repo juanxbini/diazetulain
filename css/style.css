@@ -2083,34 +2083,59 @@ footer {
     display: none;
   }
 
-  /* Mobile: la balanza pasa a fondo (watermark) centrado detrás del texto */
+  /* Mobile: la balanza protagonista — nítida, sin filtro, recortada al
+     costado derecho del hero (crop intencional fuera del viewport). */
+  .hero {
+    overflow-x: hidden;
+  }
+
+  /* Sin position aquí: la balanza se posiciona respecto al .hero */
   .hero .container {
     display: block;
-    position: relative;
-    padding: 120px 0 56px;
+    padding: 120px 24px 56px;
   }
 
   .hero-image {
     position: absolute;
-    inset: 0;
+    top: 14vh;
+    right: -26vw;
+    width: 80vw;
+    height: auto;
     z-index: 0;
-    opacity: 0.2;
+    opacity: 1;
+    overflow: visible;
+    /* El fondo del JPEG ya coincide con el crema del hero, así que la
+       balanza se integra sin necesidad de drop-shadow. */
+    /* No intercepta taps: los botones del hero quedan clickeables */
     pointer-events: none;
   }
 
   .hero-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     max-width: none;
     max-height: none;
     object-fit: contain;
-    transform: scale(1.7);
+    filter: none;
+    /* Zoom para que la balanza sea protagonista, recortando el margen
+       crema sobrante del JPEG (igual criterio que desktop). */
+    transform: scale(1.55);
+    transform-origin: center;
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: 0;
+    /* Columna de texto a la izquierda: no se pisa con la parte
+       visible de la balanza (que queda a la derecha del hero). */
+    max-width: 60%;
+  }
+
+  /* El badge va arriba, sobre el margen crema de la balanza: puede ir
+     en una sola línea aunque exceda el ancho de la columna de texto. */
+  .hero-badge {
+    white-space: nowrap;
   }
 
   .footer-top {
