@@ -611,33 +611,6 @@ p { color: var(--text-light); line-height: 1.75; }
   font-size: 0.9rem;
 }
 
-.about-badge-float {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: var(--gold);
-  color: var(--dark);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  box-shadow: var(--shadow-lg);
-  text-align: center;
-}
-
-.about-badge-float strong {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-.about-badge-float span {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.8;
-}
-
 .about-text .section-subtitle {
   margin-bottom: 40px;
 }
