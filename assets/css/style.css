@@ -368,49 +368,111 @@ p { color: var(--text-light); line-height: 1.75; }
 .hamburger.open span:nth-child(3) { transform: rotate(45deg) translate(2px, -7px); width: 20px; }
 
 /* ===================================
-   HERO SECTION
+   HERO SECTION — Emblema monumental
+   La balanza del estudio es la protagonista: centrada, a gran
+   escala, sobre un halo dorado y anillos que ella "rompe" al
+   sobresalir por encima y por debajo.
    =================================== */
 .hero {
   min-height: 100vh;
-  /* Mismo color exacto que el fondo de la imagen de la balanza,
-     así la imagen (como elemento) se integra como si fuera el fondo. */
+  /* Mismo crema que el fondo original del emblema */
   background-color: #f4f6e8;
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
-}
-
-/* Imagen a la izquierda, contenido a la derecha */
-.hero .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 40px;
-}
-
-/* La balanza como elemento, grande y sin filtro */
-.hero-image {
-  display: flex;
-  align-items: center;
   justify-content: center;
+  text-align: center;
   overflow: hidden;
 }
 
-.hero-image img {
-  width: auto;
-  max-width: 100%;
-  max-height: 92vh;
-  object-fit: contain;
-  /* Zoom para agrandar la balanza recortando el margen crema sobrante */
-  transform: scale(1.5);
-  transform-origin: center;
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.hero-content {
+/* Halo dorado: centra la mirada en el emblema */
+.hero-halo {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 140vmin;
+  height: 140vmin;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+    rgba(201, 168, 76, 0.26) 0%,
+    rgba(201, 168, 76, 0.10) 38%,
+    rgba(201, 168, 76, 0) 68%);
+}
+
+/* Anillos ceremoniales: más bajos que la balanza, que los desborda */
+.hero-ring {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-ring--1 {
+  width: 50vmin;
+  height: 50vmin;
+  border: 1px solid rgba(154, 122, 46, 0.35);
+}
+
+.hero-ring--2 {
+  width: 72vmin;
+  height: 72vmin;
+  border: 1px dashed rgba(154, 122, 46, 0.18);
+}
+
+.hero .container {
   position: relative;
   z-index: 1;
-  padding: 100px 0 80px;
+  /* width explícito: como flex-item de .hero, sin esto colapsa a
+     fit-content y los textos desbordan en viewports angostos */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 116px;
+  padding-bottom: 72px;
+}
+
+/* El emblema: grande, nítido, con profundidad y flotación sutil.
+   La flotación va en el img para no pisar el transform del fade-in
+   de entrada, que vive en el wrapper. */
+.hero-figure {
+  position: relative;
+  height: min(60vh, 580px);
+  filter: drop-shadow(0 28px 56px rgba(13, 17, 23, 0.22));
+}
+
+.hero-figure img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  animation: heroFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-figure img { animation: none; }
+}
+
+/* El título se solapa con la base del emblema: la balanza sobresale
+   por detrás del mensaje sin sacrificar legibilidad. */
+/* Ancho completo (no fit-content del flex padre): los textos
+   envuelven dentro del container y se centran por márgenes. */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-top: -3vh;
+  width: 100%;
 }
 
 .hero-badge {
@@ -421,7 +483,9 @@ p { color: var(--text-light); line-height: 1.75; }
   border: 1px solid rgba(201, 168, 76, 0.2);
   border-radius: 50px;
   padding: 8px 16px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-badge span {
@@ -443,6 +507,11 @@ p { color: var(--text-light); line-height: 1.75; }
 .hero h1 {
   color: var(--text);
   margin-bottom: 24px;
+  /* Halo crema bajo el texto: legible aunque pise la base del emblema */
+  text-shadow:
+    0 1px 0 #f4f6e8,
+    0 0 14px #f4f6e8,
+    0 0 28px #f4f6e8;
 }
 
 .hero h1 .accent {
@@ -453,8 +522,8 @@ p { color: var(--text-light); line-height: 1.75; }
 .hero-desc {
   font-size: 1.1rem;
   color: var(--text-light);
-  max-width: 540px;
-  margin-bottom: 40px;
+  max-width: 600px;
+  margin: 0 auto 40px;
   line-height: 1.8;
 }
 
@@ -462,13 +531,15 @@ p { color: var(--text-light); line-height: 1.75; }
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  justify-content: center;
+  margin-bottom: 56px;
 }
 
 .hero-stats {
   display: flex;
   gap: 48px;
-  padding-top: 40px;
+  justify-content: center;
+  padding-top: 36px;
   border-top: 1px solid rgba(0,0,0,0.1);
 }
 
@@ -1893,59 +1964,34 @@ footer {
     display: none;
   }
 
-  /* Mobile: la balanza protagonista — nítida, sin filtro, recortada al
-     costado derecho del hero (crop intencional fuera del viewport). */
-  .hero {
-    overflow-x: hidden;
-  }
-
-  /* Sin position aquí: la balanza se posiciona respecto al .hero */
+  /* Mobile: el emblema sigue siendo protagonista, centrado y a gran
+     escala; en portrait los anillos (vmin = vw) lo enmarcan ajustados. */
   .hero .container {
-    display: block;
-    padding: 120px 24px 56px;
+    padding-top: 104px;
+    padding-bottom: 56px;
   }
 
-  .hero-image {
-    position: absolute;
-    top: 14vh;
-    right: -26vw;
-    width: 80vw;
-    height: auto;
-    z-index: 0;
-    opacity: 1;
-    overflow: visible;
-    /* El fondo del JPEG ya coincide con el crema del hero, así que la
-       balanza se integra sin necesidad de drop-shadow. */
-    /* No intercepta taps: los botones del hero quedan clickeables */
-    pointer-events: none;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    filter: none;
-    /* Zoom para que la balanza sea protagonista, recortando el margen
-       crema sobrante del JPEG (igual criterio que desktop). */
-    transform: scale(1.55);
-    transform-origin: center;
+  .hero-figure {
+    height: min(42vh, 380px);
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0;
-    /* Columna de texto a la izquierda: no se pisa con la parte
-       visible de la balanza (que queda a la derecha del hero). */
-    max-width: 60%;
+    margin-top: -2vh;
   }
 
-  /* El badge va arriba, sobre el margen crema de la balanza: puede ir
-     en una sola línea aunque exceda el ancho de la columna de texto. */
-  .hero-badge {
-    white-space: nowrap;
+  .hero-halo {
+    width: 170vmin;
+    height: 170vmin;
+  }
+
+  .hero-ring--1 {
+    width: 84vmin;
+    height: 84vmin;
+  }
+
+  .hero-ring--2 {
+    width: 112vmin;
+    height: 112vmin;
   }
 
   .footer-top {
@@ -1970,6 +2016,8 @@ footer {
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; }
   .hero-stats { display: none; }
+  /* "disposición legal" no entra a 2.2rem en pantallas angostas */
+  .hero h1 { font-size: clamp(1.7rem, 8.5vw, 2.2rem); }
   .services-grid { grid-template-columns: 1fr; }
   .team-grid { flex-direction: column; align-items: center; }
 }
