@@ -53,7 +53,6 @@
 .ciudadania-item-icon svg { width: 18px; height: 18px; color: var(--gold); }
 .empresa-item-icon  svg { width: 24px; height: 24px; color: var(--gold); }
 .contact-item-icon  svg { width: 22px; height: 22px; color: var(--gold); }
-.about-icon         svg { width: 36px; height: 36px; color: var(--gold); }
 .avatar             svg { width: 48px; height: 48px; color: var(--gold); }
 .team-social a      svg, .team-social a i      { width: 17px; height: 17px; font-size: 17px; }
 .contact-social a   svg, .contact-social a i   { width: 19px; height: 19px; font-size: 19px; }
@@ -625,61 +624,33 @@ p { color: var(--text-light); line-height: 1.75; }
   position: relative;
 }
 
-.about-card-main::before {
-  content: '';
+.about-photo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark) 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.about-card-main .inner-pattern {
+.about-photo-caption {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(201, 168, 76, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 168, 76, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.about-card-main .inner-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+  inset: auto 0 0 0;
+  padding: 80px 32px 28px;
   text-align: center;
+  background: linear-gradient(to top, rgba(10, 12, 16, 0.92) 0%, rgba(10, 12, 16, 0.55) 55%, transparent 100%);
 }
 
-.about-icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgba(201, 168, 76, 0.08);
-  border: 1px solid rgba(201, 168, 76, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  font-size: 2.2rem;
-}
-
-.about-logo-img {
-  width: 84px;
-  height: 84px;
-  object-fit: contain;
-}
-
-.about-card-main .inner-content h3 {
+.about-photo-caption h3 {
   color: var(--white);
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
 }
 
-.about-card-main .inner-content p {
-  color: rgba(255,255,255,0.6);
+.about-photo-caption p {
+  color: var(--gold);
   font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .about-text .section-subtitle {
