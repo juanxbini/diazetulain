@@ -882,6 +882,10 @@ p { color: var(--text-light); line-height: 1.75; }
   align-items: center;
 }
 
+.empresas .section-subtitle {
+  margin-bottom: 36px;
+}
+
 .empresas-services {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -998,7 +1002,7 @@ p { color: var(--text-light); line-height: 1.75; }
 .inmob-card-num {
   font-family: var(--font-heading);
   font-size: 3rem;
-  color: rgba(201, 168, 76, 0.15);
+  color: var(--gold);
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -1050,21 +1054,13 @@ p { color: var(--text-light); line-height: 1.75; }
 
 .team-card-header {
   height: 300px;
-  background: var(--dark);
+  /* mismo blanco de la tarjeta para que la foto recortada se mimetice */
+  background: var(--white);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.team-card-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at center, rgba(201, 168, 76, 0.12) 0%, transparent 70%),
-    linear-gradient(135deg, var(--dark-2) 0%, var(--dark) 100%);
 }
 
 /* La foto ocupa todo el header de la tarjeta (a sangre completa). */
@@ -1079,6 +1075,20 @@ p { color: var(--text-light); line-height: 1.75; }
   height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+
+/* Avatar provisorio sin foto (icono centrado) */
+.team-card-header .avatar.avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-card-header .avatar-placeholder svg {
+  width: 96px;
+  height: 96px;
+  color: var(--gold);
+  opacity: 0.65;
 }
 
 .team-card-role {
@@ -1188,8 +1198,8 @@ p { color: var(--text-light); line-height: 1.75; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 240px;
-  height: 130px;
+  width: 300px;
+  height: 165px;
   padding: 24px 28px;
   background: var(--white);
   border: 1px solid var(--gray-200);
@@ -1692,7 +1702,12 @@ footer {
   margin-bottom: 4px;
 }
 
-.footer-logo-estudio,
+.footer-logo-estudio {
+  height: 116px;
+  width: auto;
+  object-fit: contain;
+}
+
 .footer-logo-gestoria {
   height: 88px;
   width: auto;
