@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "estudiojuridicodiazetulain.ar" }],
+      "destination": "https://www.estudiojuridicodiazetulain.ar/$1",
+      "permanent": true
+    }
+  ]
+}
