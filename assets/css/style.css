@@ -223,6 +223,7 @@ p { color: var(--text-light); line-height: 1.75; }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
 .fade-in-delay-5 { transition-delay: 0.5s; }
+.fade-in-delay-6 { transition-delay: 0.6s; }
 
 /* ===================================
    NAVIGATION
@@ -531,7 +532,36 @@ p { color: var(--text-light); line-height: 1.75; }
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* Redes del estudio debajo de los botones del hero */
+.hero-social {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
   margin-bottom: 56px;
+}
+
+.hero-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(31,41,55,0.04);
+  border: 1px solid rgba(31,41,55,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text);
+  transition: all var(--transition);
+}
+
+.hero-social a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--dark);
+  transform: translateY(-3px);
 }
 
 .hero-stats {
